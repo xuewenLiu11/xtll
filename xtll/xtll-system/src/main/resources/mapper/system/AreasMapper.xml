@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xtll.system.mapper.AreasMapper" >
+  <resultMap id="BaseResultMap" type="com.xtll.system.domain.Areas" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="ParentId" property="parentid" jdbcType="VARCHAR" />
+    <result column="LevelType" property="leveltype" jdbcType="VARCHAR" />
+    <result column="Name" property="name" jdbcType="VARCHAR" />
+    <result column="ShortName" property="shortname" jdbcType="VARCHAR" />
+    <result column="ParentPath" property="parentpath" jdbcType="VARCHAR" />
+    <result column="Province" property="province" jdbcType="VARCHAR" />
+    <result column="City" property="city" jdbcType="VARCHAR" />
+    <result column="District" property="district" jdbcType="VARCHAR" />
+    <result column="ProvinceShortName" property="provinceshortname" jdbcType="VARCHAR" />
+    <result column="CityShortName" property="cityshortname" jdbcType="VARCHAR" />
+    <result column="DistrictShortName" property="districtshortname" jdbcType="VARCHAR" />
+    <result column="ProvincePinyin" property="provincepinyin" jdbcType="VARCHAR" />
+    <result column="CityPinyin" property="citypinyin" jdbcType="VARCHAR" />
+    <result column="DistrictPinyin" property="districtpinyin" jdbcType="VARCHAR" />
+    <result column="CityCode" property="citycode" jdbcType="VARCHAR" />
+    <result column="ZipCode" property="zipcode" jdbcType="VARCHAR" />
+    <result column="Pinyin" property="pinyin" jdbcType="VARCHAR" />
+    <result column="Jianpin" property="jianpin" jdbcType="VARCHAR" />
+    <result column="FirstChar" property="firstchar" jdbcType="VARCHAR" />
+    <result column="lng" property="lng" jdbcType="VARCHAR" />
+    <result column="Lat" property="lat" jdbcType="VARCHAR" />
+    <result column="Remark1" property="remark1" jdbcType="VARCHAR" />
+    <result column="Remark2" property="remark2" jdbcType="VARCHAR" />
+    <result column="agt_cardId" property="agtCardid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, ParentId, LevelType, Name, ShortName, ParentPath, Province, City, District, ProvinceShortName, 
+    CityShortName, DistrictShortName, ProvincePinyin, CityPinyin, DistrictPinyin, CityCode, 
+    ZipCode, Pinyin, Jianpin, FirstChar, lng, Lat, Remark1, Remark2, agt_cardId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from areas
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from areas
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xtll.system.domain.Areas" >
+    insert into areas (ID, ParentId, LevelType, 
+      Name, ShortName, ParentPath, 
+      Province, City, District, 
+      ProvinceShortName, CityShortName, DistrictShortName, 
+      ProvincePinyin, CityPinyin, DistrictPinyin, 
+      CityCode, ZipCode, Pinyin, 
+      Jianpin, FirstChar, lng, 
+      Lat, Remark1, Remark2, 
+      agt_cardId)
+    values (#{id,jdbcType=VARCHAR}, #{parentid,jdbcType=VARCHAR}, #{leveltype,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{shortname,jdbcType=VARCHAR}, #{parentpath,jdbcType=VARCHAR}, 
+      #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{district,jdbcType=VARCHAR}, 
+      #{provinceshortname,jdbcType=VARCHAR}, #{cityshortname,jdbcType=VARCHAR}, #{districtshortname,jdbcType=VARCHAR}, 
+      #{provincepinyin,jdbcType=VARCHAR}, #{citypinyin,jdbcType=VARCHAR}, #{districtpinyin,jdbcType=VARCHAR}, 
+      #{citycode,jdbcType=VARCHAR}, #{zipcode,jdbcType=VARCHAR}, #{pinyin,jdbcType=VARCHAR}, 
+      #{jianpin,jdbcType=VARCHAR}, #{firstchar,jdbcType=VARCHAR}, #{lng,jdbcType=VARCHAR}, 
+      #{lat,jdbcType=VARCHAR}, #{remark1,jdbcType=VARCHAR}, #{remark2,jdbcType=VARCHAR}, 
+      #{agtCardid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xtll.system.domain.Areas" >
+    insert into areas
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+
+      <if test="parentid != null" >
+        ParentId,
+      </if>
+      <if test="leveltype != null" >
+        LevelType,
+      </if>
+      <if test="name != null" >
+        Name,
+      </if>
+      <if test="shortname != null" >
+        ShortName,
+      </if>
+      <if test="parentpath != null" >
+        ParentPath,
+      </if>
+      <if test="province != null" >
+        Province,
+      </if>
+      <if test="city != null" >
+        City,
+      </if>
+      <if test="district != null" >
+        District,
+      </if>
+      <if test="provinceshortname != null" >
+        ProvinceShortName,
+      </if>
+      <if test="cityshortname != null" >
+        CityShortName,
+      </if>
+      <if test="districtshortname != null" >
+        DistrictShortName,
+      </if>
+      <if test="provincepinyin != null" >
+        ProvincePinyin,
+      </if>
+      <if test="citypinyin != null" >
+        CityPinyin,
+      </if>
+      <if test="districtpinyin != null" >
+        DistrictPinyin,
+      </if>
+      <if test="citycode != null" >
+        CityCode,
+      </if>
+      <if test="zipcode != null" >
+        ZipCode,
+      </if>
+      <if test="pinyin != null" >
+        Pinyin,
+      </if>
+      <if test="jianpin != null" >
+        Jianpin,
+      </if>
+      <if test="firstchar != null" >
+        FirstChar,
+      </if>
+      <if test="lng != null" >
+        lng,
+      </if>
+      <if test="lat != null" >
+        Lat,
+      </if>
+      <if test="remark1 != null" >
+        Remark1,
+      </if>
+      <if test="remark2 != null" >
+        Remark2,
+      </if>
+      <if test="agtCardid != null" >
+        agt_cardId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+
+      <if test="parentid != null" >
+        #{parentid,jdbcType=VARCHAR},
+      </if>
+      <if test="leveltype != null" >
+        #{leveltype,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="shortname != null" >
+        #{shortname,jdbcType=VARCHAR},
+      </if>
+      <if test="parentpath != null" >
+        #{parentpath,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null" >
+        #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceshortname != null" >
+        #{provinceshortname,jdbcType=VARCHAR},
+      </if>
+      <if test="cityshortname != null" >
+        #{cityshortname,jdbcType=VARCHAR},
+      </if>
+      <if test="districtshortname != null" >
+        #{districtshortname,jdbcType=VARCHAR},
+      </if>
+      <if test="provincepinyin != null" >
+        #{provincepinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="citypinyin != null" >
+        #{citypinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="districtpinyin != null" >
+        #{districtpinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="citycode != null" >
+        #{citycode,jdbcType=VARCHAR},
+      </if>
+      <if test="zipcode != null" >
+        #{zipcode,jdbcType=VARCHAR},
+      </if>
+      <if test="pinyin != null" >
+        #{pinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="jianpin != null" >
+        #{jianpin,jdbcType=VARCHAR},
+      </if>
+      <if test="firstchar != null" >
+        #{firstchar,jdbcType=VARCHAR},
+      </if>
+      <if test="lng != null" >
+        #{lng,jdbcType=VARCHAR},
+      </if>
+      <if test="lat != null" >
+        #{lat,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null" >
+        #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="agtCardid != null" >
+        #{agtCardid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xtll.system.domain.Areas" >
+    update areas
+    <set >
+      <if test="parentid != null" >
+        ParentId = #{parentid,jdbcType=VARCHAR},
+      </if>
+      <if test="leveltype != null" >
+        LevelType = #{leveltype,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        Name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="shortname != null" >
+        ShortName = #{shortname,jdbcType=VARCHAR},
+      </if>
+      <if test="parentpath != null" >
+        ParentPath = #{parentpath,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        Province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        City = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null" >
+        District = #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceshortname != null" >
+        ProvinceShortName = #{provinceshortname,jdbcType=VARCHAR},
+      </if>
+      <if test="cityshortname != null" >
+        CityShortName = #{cityshortname,jdbcType=VARCHAR},
+      </if>
+      <if test="districtshortname != null" >
+        DistrictShortName = #{districtshortname,jdbcType=VARCHAR},
+      </if>
+      <if test="provincepinyin != null" >
+        ProvincePinyin = #{provincepinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="citypinyin != null" >
+        CityPinyin = #{citypinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="districtpinyin != null" >
+        DistrictPinyin = #{districtpinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="citycode != null" >
+        CityCode = #{citycode,jdbcType=VARCHAR},
+      </if>
+      <if test="zipcode != null" >
+        ZipCode = #{zipcode,jdbcType=VARCHAR},
+      </if>
+      <if test="pinyin != null" >
+        Pinyin = #{pinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="jianpin != null" >
+        Jianpin = #{jianpin,jdbcType=VARCHAR},
+      </if>
+      <if test="firstchar != null" >
+        FirstChar = #{firstchar,jdbcType=VARCHAR},
+      </if>
+      <if test="lng != null" >
+        lng = #{lng,jdbcType=VARCHAR},
+      </if>
+      <if test="lat != null" >
+        Lat = #{lat,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        Remark1 = #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null" >
+        Remark2 = #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="agtCardid != null" >
+        agt_cardId = #{agtCardid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xtll.system.domain.Areas" >
+    update areas
+    set ParentId = #{parentid,jdbcType=VARCHAR},
+      LevelType = #{leveltype,jdbcType=VARCHAR},
+      Name = #{name,jdbcType=VARCHAR},
+      ShortName = #{shortname,jdbcType=VARCHAR},
+      ParentPath = #{parentpath,jdbcType=VARCHAR},
+      Province = #{province,jdbcType=VARCHAR},
+      City = #{city,jdbcType=VARCHAR},
+      District = #{district,jdbcType=VARCHAR},
+      ProvinceShortName = #{provinceshortname,jdbcType=VARCHAR},
+      CityShortName = #{cityshortname,jdbcType=VARCHAR},
+      DistrictShortName = #{districtshortname,jdbcType=VARCHAR},
+      ProvincePinyin = #{provincepinyin,jdbcType=VARCHAR},
+      CityPinyin = #{citypinyin,jdbcType=VARCHAR},
+      DistrictPinyin = #{districtpinyin,jdbcType=VARCHAR},
+      CityCode = #{citycode,jdbcType=VARCHAR},
+      ZipCode = #{zipcode,jdbcType=VARCHAR},
+      Pinyin = #{pinyin,jdbcType=VARCHAR},
+      Jianpin = #{jianpin,jdbcType=VARCHAR},
+      FirstChar = #{firstchar,jdbcType=VARCHAR},
+      lng = #{lng,jdbcType=VARCHAR},
+      Lat = #{lat,jdbcType=VARCHAR},
+      Remark1 = #{remark1,jdbcType=VARCHAR},
+      Remark2 = #{remark2,jdbcType=VARCHAR},
+      agt_cardId = #{agtCardid,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

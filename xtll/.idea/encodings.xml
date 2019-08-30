@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xtll-admin" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xtll-common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xtll-framework" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xtll-generator" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xtll-quartz" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xtll-system" charset="UTF-8" />
+  </component>
+</project>

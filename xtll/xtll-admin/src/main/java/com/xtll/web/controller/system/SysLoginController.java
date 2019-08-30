@@ -1,0 +1,73 @@
+package com.xtll.web.controller.system;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import com.xtll.system.domain.XtUser;
+import io.swagger.annotations.Api;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
+import com.xtll.common.core.controller.BaseController;
+import com.xtll.common.core.domain.AjaxResult;
+import com.xtll.common.utils.ServletUtils;
+import com.xtll.common.utils.StringUtils;
+
+/**
+ * 登录验证
+ * 
+ * @author xtll
+ */
+
+@Controller
+public class SysLoginController extends BaseController
+{
+    @GetMapping("/loginR")
+    public String login(HttpServletRequest request, HttpServletResponse response)
+    {
+        // 如果是Ajax请求，返回Json字符串。
+        if (ServletUtils.isAjaxRequest(request))
+        {
+            return ServletUtils.renderString(response, "{\"code\":\"1\",\"msg\":\"未登录或登录超时。请重新登录\"}");
+        }
+
+        return "loginR";
+    }
+
+
+    //通過ajax傳入到這個controller  post方法
+    @PostMapping("/loginR")
+    @ResponseBody
+    public AjaxResult ajaxLogin(@RequestBody XtUser user)
+    {
+
+
+        Boolean rememberMe=true;
+        UsernamePasswordToken token = new UsernamePasswordToken(user.getLoginName(),user.getPassword(), rememberMe);
+        Subject subject = SecurityUtils.getSubject();
+        try
+        {
+            subject.login(token);
+            return success();
+        }
+        catch (AuthenticationException e)
+        {
+            String msg = "用户或密码错误";
+            if (StringUtils.isNotEmpty(e.getMessage()))
+            {
+                msg = e.getMessage();
+            }
+            return error(msg);
+        }
+    }
+
+    @GetMapping("/unauthR")
+    public String unauth()
+    {
+        return "error/unauth";
+    }
+}

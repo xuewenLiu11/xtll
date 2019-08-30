@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xtll.system.mapper.GoodsAddMapper" >
+  <resultMap id="BaseResultMap" type="com.xtll.system.domain.GoodsAdd" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="type_third" property="typeThird" jdbcType="VARCHAR" />
+    <result column="farm" property="farm" jdbcType="VARCHAR" />
+    <result column="specs" property="specs" jdbcType="VARCHAR" />
+    <result column="seasinal" property="seasinal" jdbcType="VARCHAR" />
+    <result column="merchant_price" property="merchantPrice" jdbcType="DOUBLE" />
+    <result column="platform_price" property="platformPrice" jdbcType="DOUBLE" />
+    <result column="distribution" property="distribution" jdbcType="VARCHAR" />
+    <result column="add_time" property="addTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="buss_id" property="bussId" jdbcType="INTEGER" />
+    <result column="type_second" property="typeSecond" jdbcType="VARCHAR" />
+    <result column="type_first" property="typeFirst" jdbcType="VARCHAR" />
+    <result column="added_date" property="addedDate" jdbcType="DATE" />
+    <result column="off_date" property="offDate" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, type_third, farm, specs, seasinal, merchant_price, platform_price, distribution, 
+    add_time, status, buss_id, type_second, type_first, added_date, off_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from goods_add
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from goods_add
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xtll.system.domain.GoodsAdd" >
+    insert into goods_add (id, name, type_third, 
+      farm, specs, seasinal, 
+      merchant_price, platform_price, distribution, 
+      add_time, status, buss_id, 
+      type_second, type_first, added_date, 
+      off_date)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{typeThird,jdbcType=VARCHAR}, 
+      #{farm,jdbcType=VARCHAR}, #{specs,jdbcType=VARCHAR}, #{seasinal,jdbcType=VARCHAR}, 
+      #{merchantPrice,jdbcType=DOUBLE}, #{platformPrice,jdbcType=DOUBLE}, #{distribution,jdbcType=VARCHAR}, 
+      #{addTime,jdbcType=TIMESTAMP}, #{status,jdbcType=VARCHAR}, #{bussId,jdbcType=INTEGER}, 
+      #{typeSecond,jdbcType=VARCHAR}, #{typeFirst,jdbcType=VARCHAR}, #{addedDate,jdbcType=DATE}, 
+      #{offDate,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xtll.system.domain.GoodsAdd" >
+    insert into goods_add
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="typeThird != null" >
+        type_third,
+      </if>
+      <if test="farm != null" >
+        farm,
+      </if>
+      <if test="specs != null" >
+        specs,
+      </if>
+      <if test="seasinal != null" >
+        seasinal,
+      </if>
+      <if test="merchantPrice != null" >
+        merchant_price,
+      </if>
+      <if test="platformPrice != null" >
+        platform_price,
+      </if>
+      <if test="distribution != null" >
+        distribution,
+      </if>
+      <if test="addTime != null" >
+        add_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="bussId != null" >
+        buss_id,
+      </if>
+      <if test="typeSecond != null" >
+        type_second,
+      </if>
+      <if test="typeFirst != null" >
+        type_first,
+      </if>
+      <if test="addedDate != null" >
+        added_date,
+      </if>
+      <if test="offDate != null" >
+        off_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="typeThird != null" >
+        #{typeThird,jdbcType=VARCHAR},
+      </if>
+      <if test="farm != null" >
+        #{farm,jdbcType=VARCHAR},
+      </if>
+      <if test="specs != null" >
+        #{specs,jdbcType=VARCHAR},
+      </if>
+      <if test="seasinal != null" >
+        #{seasinal,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantPrice != null" >
+        #{merchantPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="platformPrice != null" >
+        #{platformPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="distribution != null" >
+        #{distribution,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null" >
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="bussId != null" >
+        #{bussId,jdbcType=INTEGER},
+      </if>
+      <if test="typeSecond != null" >
+        #{typeSecond,jdbcType=VARCHAR},
+      </if>
+      <if test="typeFirst != null" >
+        #{typeFirst,jdbcType=VARCHAR},
+      </if>
+      <if test="addedDate != null" >
+        #{addedDate,jdbcType=DATE},
+      </if>
+      <if test="offDate != null" >
+        #{offDate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xtll.system.domain.GoodsAdd" >
+    update goods_add
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="typeThird != null" >
+        type_third = #{typeThird,jdbcType=VARCHAR},
+      </if>
+      <if test="farm != null" >
+        farm = #{farm,jdbcType=VARCHAR},
+      </if>
+      <if test="specs != null" >
+        specs = #{specs,jdbcType=VARCHAR},
+      </if>
+      <if test="seasinal != null" >
+        seasinal = #{seasinal,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantPrice != null" >
+        merchant_price = #{merchantPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="platformPrice != null" >
+        platform_price = #{platformPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="distribution != null" >
+        distribution = #{distribution,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null" >
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="bussId != null" >
+        buss_id = #{bussId,jdbcType=INTEGER},
+      </if>
+      <if test="typeSecond != null" >
+        type_second = #{typeSecond,jdbcType=VARCHAR},
+      </if>
+      <if test="typeFirst != null" >
+        type_first = #{typeFirst,jdbcType=VARCHAR},
+      </if>
+      <if test="addedDate != null" >
+        added_date = #{addedDate,jdbcType=DATE},
+      </if>
+      <if test="offDate != null" >
+        off_date = #{offDate,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xtll.system.domain.GoodsAdd" >
+    update goods_add
+    set name = #{name,jdbcType=VARCHAR},
+      type_third = #{typeThird,jdbcType=VARCHAR},
+      farm = #{farm,jdbcType=VARCHAR},
+      specs = #{specs,jdbcType=VARCHAR},
+      seasinal = #{seasinal,jdbcType=VARCHAR},
+      merchant_price = #{merchantPrice,jdbcType=DOUBLE},
+      platform_price = #{platformPrice,jdbcType=DOUBLE},
+      distribution = #{distribution,jdbcType=VARCHAR},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=VARCHAR},
+      buss_id = #{bussId,jdbcType=INTEGER},
+      type_second = #{typeSecond,jdbcType=VARCHAR},
+      type_first = #{typeFirst,jdbcType=VARCHAR},
+      added_date = #{addedDate,jdbcType=DATE},
+      off_date = #{offDate,jdbcType=DATE}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectListByStatus" resultType="com.xtll.system.domain.GoodsAdd">
+    select * from goods_add where
+    status in
+    <foreach collection="statu" item="item" open="(" close=")" separator=",">
+      #{item,jdbcType=INTEGER}
+    </foreach>
+    <if test="typeFirst != null" >
+      and type_first = #{typeFirst}
+    </if>
+    <if test="typeSecond != null" >
+      and type_second = #{typeSecond}
+    </if>
+    <if test="typeThird != null" >
+      and type_third = #{typeThird,jdbcType=VARCHAR}
+    </if>
+  </select>
+</mapper>
